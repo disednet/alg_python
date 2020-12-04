@@ -48,7 +48,7 @@ def dekstraSearch(data, first, item):
     for key in data[first].keys():
         parents[key] = first
         costs[key] = data[first][key]
-    #costs[first] = 0
+    costs[first] = 0
     while (len(processed) < len(costs.keys())):
         currentItem = getMinKey(costs, processed)
         for key, value in data[currentItem].items():
