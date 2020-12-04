@@ -78,7 +78,22 @@ class TestGraphWithoutWeighModule(unittest.TestCase):
         self.assertEqual(graph.extendSearch(self.data, "d1", "d33"), ["d1", "d0", "d3", "d33"])
         self.assertEqual(graph.extendSearch(self.data, "d2", "d23"), ["d2", "d23"])
 
-        
+class TestGraphWithinWeighModule(unittest.TestCase):
+    def setUp(self):
+        self.data = {}
+        self.data["start"] = {}
+        self.data["start"]["a"] = 6 
+        self.data["start"]["b"] = 2
+        self.data["a"] = {}
+        self.data["a"]["finish"] = 1
+        self.data["b"] = {}
+        self.data["b"]["finish"] = 5
+        self.data["b"]["a"] = 3
+        self.data["finish"] = {}
+
+    def test_dekstraSearch(self):
+        self.assertEqual(graph.dekstraSearch(self.data, "start", "finish"), ["start", "b", "a", "finish"])    
+
         
 if __name__ == "__main__":
     unittest.main()
