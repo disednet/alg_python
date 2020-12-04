@@ -2,6 +2,7 @@ import search
 import unittest
 import random
 import copy
+import graph
 random.seed()
 class TestSearchMethod(unittest.TestCase):
     def test_bynarySearh_1(self):
@@ -54,5 +55,30 @@ class TestSortMethod(unittest.TestCase):
         self.assertEqual(search.quickSort(self.unorderedData), self.orderedData)    
 
 
+class TestGraphWithoutWeighModule(unittest.TestCase):
+    def setUp(self):
+        self.data={}
+        self.data["d0"] = ["d1", "d2", "d3"]
+        self.data["d1"] = ["d11", "d12", "d13", "d0"]
+        self.data["d2"] = ["d21", "d22", "d23"]
+        self.data["d3"] = ["d31", "d32", "d33"]
+        self.data["d11"] = []
+        self.data["d12"] = []
+        self.data["d13"] = []
+        self.data["d21"] = []
+        self.data["d22"] = []
+        self.data["d23"] = []
+        self.data["d31"] = []
+        self.data["d32"] = []
+        self.data["d33"] = []
+    def test_extendSearch_Simple(self):
+        self.assertEqual(graph.extendSearch(self.data, "d0", "d13"), ["d0", "d1", "d13"])
+        self.assertEqual(graph.extendSearch(self.data, "d0", "d33"), ["d0", "d3", "d33"])
+        self.assertEqual(graph.extendSearch(self.data, "d0", "d12"), ["d0", "d1", "d12"])
+        self.assertEqual(graph.extendSearch(self.data, "d1", "d33"), ["d1", "d0", "d3", "d33"])
+        self.assertEqual(graph.extendSearch(self.data, "d2", "d23"), ["d2", "d23"])
+
+        
+        
 if __name__ == "__main__":
     unittest.main()
