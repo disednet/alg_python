@@ -3,6 +3,7 @@ import unittest
 import random
 import copy
 import graph
+import greedyTasks
 random.seed()
 class TestSearchMethod(unittest.TestCase):
     def test_bynarySearh_1(self):
@@ -93,6 +94,21 @@ class TestGraphWithinWeighModule(unittest.TestCase):
 
     def test_dekstraSearch(self):
         self.assertEqual(graph.dekstraSearch(self.data, "start", "finish"), ["start", "b", "a", "finish"])    
+
+class TestGreedyAlg(unittest.TestCase):
+    def test_findStates(self):
+        data = {}
+        data["st1"] = set(["g1", "g2", "g3", "g5"])
+        data["st2"] = set(["g1", "g4", "g7"])
+        data["st3"] = set(["g8", "g5"])
+        data["st4"] = set(["g7", "g8", "g9", "g10", "g6"])
+        data["st5"] = set(["g3", "g8", "g9", "g11", "g12"])
+        needed = ["g1", "g2", "g3", "g4", "g5", "g6", "g7", "g8", "g9", "g10", "g11", "g12"]
+        result = greedyTasks.getStations(needed, data)
+        self.assertIsNotNone(result)
+        self.assertEqual(len(result), 4)
+        
+
 
         
 if __name__ == "__main__":
