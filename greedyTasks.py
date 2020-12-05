@@ -1,4 +1,4 @@
-#import collections
+
 def getStations(needed, data):
     need = set()
     result = []
