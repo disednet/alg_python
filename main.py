@@ -109,7 +109,6 @@ class TestGreedyAlg(unittest.TestCase):
         self.assertEqual(len(result), 4)
         
 
-
         
 if __name__ == "__main__":
     unittest.main()
